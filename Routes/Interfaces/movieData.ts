@@ -5,6 +5,24 @@ export interface MovieDataArray {
     imageUrl:string,
 }
 
+export interface MovieDetailResponse{
+    name:string,
+    synopsis:string,
+    directedBy:string,
+    releaseDate: string,
+    posterImage:Image,
+    trailer: video
+}
+export interface MovieDetailData{
+    name:string,
+    synopsis:string,
+    directedBy:string,
+    releaseDate: string,
+    posterImage:string,
+    trailer: string
+}
+
+
 export interface MovieResponse {
     emsId:        string;
     emsVersionId: string;
@@ -14,6 +32,10 @@ export interface MovieResponse {
 
 export interface Image {
     url: string;
+}
+
+export interface video {
+    url: string
 }
 
 

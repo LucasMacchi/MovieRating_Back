@@ -14,3 +14,13 @@ export const searchMovie = (name: string): getCall => {
     }
     return getMovie
 }
+export const movieDetails = (id: string): getCall => {
+    const getMovie: getCall = {
+        params: {emsVersionId: id},
+        headers:{
+            "X-RapidAPI-Key": apiKey ? apiKey : "no api key available",
+            "X-RapidAPI-Host": apiHost ? apiHost : "no api host available" 
+        }
+    }
+    return getMovie
+}
