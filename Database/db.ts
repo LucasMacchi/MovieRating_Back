@@ -59,7 +59,7 @@ export default function(): Sequelize{
     }
     else{
         console.log("-----------IN DEV MODE-----------")
-        const connexion = new Sequelize("MovieRating", dbUser, dbPassword, {
+        const connexion = new Sequelize("MovieDB", dbUser, dbPassword, {
             host: dbHost,
             dialect: "postgres",
             logging:false,
