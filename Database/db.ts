@@ -28,6 +28,8 @@ const createTables = (sequalize: Sequelize) => {
     
 }
 
+export
+
 const relateTables = (sequalize: Sequelize) => {
     try {
         const models = sequalize.models
@@ -40,7 +42,6 @@ const relateTables = (sequalize: Sequelize) => {
     }
 
 }
-
 
 export default function(): Sequelize{
     if(process.env.NODE_ENV === "production"){

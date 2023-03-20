@@ -23,8 +23,13 @@ export default function(sequelize: Sequelize){
             allowNull: false,
         },
         dateBirth:{
-            type: DataTypes.DATE,
+            type: DataTypes.DATEONLY,
             allowNull: false,
+        },
+        isActivated:{
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false
         }
     })
 }

@@ -4,6 +4,8 @@ import db from "./Database/db"
 
 const connexion: Sequelize = db()
 
+export default connexion
+
 connexion.sync({force: true}).then(() => {
     connexion.authenticate().then(() => console.log("Database is up")).catch(() => console.log("database error"))
     try {
