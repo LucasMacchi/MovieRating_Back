@@ -7,14 +7,14 @@ export default async function (email: string, username: string, dateofbirth:stri
         email: email,
         username: username,
         password : await encryptPassword(password),
-        dateofbirth: DateOfBirthParser(dateofbirth)
+        dateBirth: DateOfBirthParser(dateofbirth)
     }
     const models = connexion.models
     await models.Profile.create({
         email: newUser.email,
         username: newUser.username,
         password: newUser.password,
-        dateBirth: newUser.dateofbirth
+        dateBirth: newUser.dateBirth
     })
     return newUser
 

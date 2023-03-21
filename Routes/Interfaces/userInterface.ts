@@ -2,5 +2,7 @@ export interface User {
     email: string,
     username: string,
     password: string,
-    dateofbirth: Date,
+    dateBirth: Date,
+    createdAt?: Date,
+    updatedAt?: Date
 }

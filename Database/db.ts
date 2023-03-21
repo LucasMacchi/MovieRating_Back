@@ -28,7 +28,6 @@ const createTables = (sequalize: Sequelize) => {
     
 }
 
-export
 
 const relateTables = (sequalize: Sequelize) => {
     try {
