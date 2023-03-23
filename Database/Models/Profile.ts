@@ -30,6 +30,9 @@ export default function(sequelize: Sequelize){
             type: DataTypes.BOOLEAN,
             allowNull: false,
             defaultValue: false
+        },
+        activationCode:{
+            type: DataTypes.INTEGER
         }
     })
 }

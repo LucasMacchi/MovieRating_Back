@@ -71,7 +71,8 @@ export async function profileSeeder(connexion: Sequelize){
             email: u.email,
             username: u.username,
             password: u.password,
-            dateBirth: u.dateBirth
+            dateBirth: u.dateBirth,
+            isActivated: true
         })
     }
 

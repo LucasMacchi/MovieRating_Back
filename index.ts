@@ -3,6 +3,7 @@ import {server, PORT } from "./app"
 import db from "./Database/db"
 import { profileSeeder } from "./Database/Seeders"
 
+
 const connexion: Sequelize = db()
 
 export default connexion

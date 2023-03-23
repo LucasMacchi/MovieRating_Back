@@ -5,3 +5,4 @@ export interface getCall {
         'X-RapidAPI-Host': string
     }
 }
+

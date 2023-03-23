@@ -11,6 +11,8 @@ Movie Routes:
 
 
 Profile Routes:
-    -/create ---> This route will create a new user, encrypting the password.
-    -/pass-validate ---> This route will validate the password for an specific account, 
-                        it will return either false or true
+    -/create ---> This route will create a new user, encrypting the password and send a email with a verification code.
+
+    -/pass-validate ---> This route will validate the password for an specific account, it will return either false or true
+    
+    -/validate-user ---> This route will validate the user using a code sent to the email

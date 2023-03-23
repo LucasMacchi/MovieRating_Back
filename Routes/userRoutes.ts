@@ -5,6 +5,7 @@ export const router = Router()
 import test_route from "./utils/test_route";
 import postUser from "./Controllers/postUser";
 import passwordValidator from "./Controllers/passwordValidator";
+import patchActivateUser from "./Controllers/patchActivateUser";
 
 //Routes
 router.get("/test", (_req, res) => {
@@ -24,6 +25,23 @@ router.post("/create", async (req, res) => {
 })
 //This route will validate the password for an specific account, it will return either false or true
 router.post("/pass-validate", async (req, res) => {
-    const {password, email} = req.body
-    res.send(await passwordValidator(email, password))
+    try {
+        const {password, email} = req.body
+        res.send(await passwordValidator(email, password))
+    } catch (error) {
+        if(error instanceof Error) res.status(400).send("ERROR = "+error.message) 
+        else res.status(404).send("Error = " + error) 
+    }
+})
+//This route will validate the user using a code sent to the email
+router.patch("/validate-user", async (req, res) => {
+    try {
+        const {email, code} = req.body
+        await patchActivateUser(email, code)
+        res.send("User Activated!")  
+    } catch (error) {
+        if(error instanceof Error) res.status(400).send("ERROR = "+error.message) 
+        else res.status(404).send("Error = " + error) 
+    }
+
 })
