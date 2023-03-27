@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize";
 import { User } from "../Routes/Interfaces/userInterface";
+import { encryptPassword } from "../Routes/utils/passwordCryter";
 
 export async function profileSeeder(connexion: Sequelize){
     const models = connexion.models
@@ -67,10 +68,11 @@ export async function profileSeeder(connexion: Sequelize){
     ]
     
     for(let u of users){
+        const pass = await encryptPassword(u.password)
         await models.Profile.create({
             email: u.email,
             username: u.username,
-            password: u.password,
+            password: pass,
             dateBirth: u.dateBirth,
             isActivated: true
         })
