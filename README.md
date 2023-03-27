@@ -16,3 +16,5 @@ Profile Routes:
     -/pass-validate ---> This route will validate the password for an specific account, it will return either false or true
     
     -/validate-user ---> This route will validate the user using a code sent to the email
+
+    -/patch-user ---> This route will change user username and sent an email informing about the change
