@@ -7,6 +7,7 @@ import postUser from "./Controllers/postUser";
 import passwordValidator from "./Controllers/passwordValidator";
 import patchActivateUser from "./Controllers/patchActivateUser";
 import patchUser from "./Controllers/patchUser";
+import getUser from "./Controllers/getUser";
 
 //Routes
 router.get("/test", (_req, res) => {
@@ -52,6 +53,17 @@ router.patch("/patch-user", async (req, res) => {
         const {email, username} = req.body
         await patchUser(username, email)
         res.send("User has been changed")
+    } catch (error) {
+        if(error instanceof Error) res.status(400).send("ERROR = "+error.message) 
+        else res.status(404).send("Error = " + error) 
+    }
+})
+//This route will return an user, the id can be either the email or the id of the user
+router.get("/:id", async (req, res) => {
+    try {
+        const id = req.params.id
+        const user = await getUser(id)
+        res.send(user)
     } catch (error) {
         if(error instanceof Error) res.status(400).send("ERROR = "+error.message) 
         else res.status(404).send("Error = " + error) 

@@ -18,3 +18,5 @@ Profile Routes:
     -/validate-user ---> This route will validate the user using a code sent to the email
 
     -/patch-user ---> This route will change user username and sent an email informing about the change
+
+    -/:id ---> This route will return an user, the id can be either the email or the id of the user
