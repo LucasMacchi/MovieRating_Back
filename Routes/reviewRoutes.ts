@@ -6,6 +6,8 @@ import test_route from "./utils/test_route";
 import postReview from "./Controllers/postReview";
 import getReviews from "./Controllers/getReviews";
 import deleteReview from "./Controllers/deleteReview";
+import patchReview from "./Controllers/patchReview";
+
 
 //Routes
 router.get("/test", (_req, res) => {
@@ -40,12 +42,25 @@ router.get("/:id", async (req, res) => {
         else res.status(404).send("Error = " + error) 
     }
 })
-
+// This route will delete a review
 router.delete("/:id", async (req, res) => {
     try {
         const id = req.params.id
         await deleteReview(id)
         res.send("Review deleted successfully")
+    } catch (error) {
+        if(error instanceof Error) res.status(400).send("ERROR = "+error.message) 
+        else res.status(404).send("Error = " + error) 
+    }
+})
+
+//This route will modify the review
+router.patch("/:id", async (req, res) => {
+    try {
+        const id = req.params.id
+        const {comment, rating} = req.body
+        const response = await patchReview(id, comment, rating)
+        res.send(response)
     } catch (error) {
         if(error instanceof Error) res.status(400).send("ERROR = "+error.message) 
         else res.status(404).send("Error = " + error) 

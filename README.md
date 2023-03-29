@@ -25,3 +25,7 @@ Review Routes:
     -/create ---> This route will create a new Review
 
     -/:id ---> This route will return reviews, if you use type "m" use the id of a movie, "u" user id, "r" review id
+    
+    -DEL /:id ---> This route will delete a review
+
+    -PATCH /:id ----> This route will modify the review
