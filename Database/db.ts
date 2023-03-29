@@ -29,18 +29,6 @@ const createTables = (sequalize: Sequelize) => {
 }
 
 
-const relateTables = (sequalize: Sequelize) => {
-    try {
-        const models = sequalize.models
-        models.Profile.hasMany(models.Review)
-        models.Movie.hasMany(models.Review)
-        console.log("Tables were related")
-    } catch (error) {
-        if(error instanceof Error) console.log("Error releating tables: "+error.message)
-        else console.log("Error releating tables: ",error)
-    }
-
-}
 
 export default function(): Sequelize{
     if(process.env.NODE_ENV === "production"){
@@ -54,7 +42,6 @@ export default function(): Sequelize{
             password: dbPassword,
         })
         createTables(connexion)
-        relateTables(connexion)
         return connexion
     }
     else{
@@ -65,7 +52,6 @@ export default function(): Sequelize{
             logging:false,
         })
         createTables(connexion)
-        relateTables(connexion)
         return connexion
     }
     

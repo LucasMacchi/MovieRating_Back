@@ -1,4 +1,4 @@
-import { DataTypes, Sequelize } from "sequelize";
+import {DataTypes, Sequelize } from "sequelize";
 
 export default function(sequelize: Sequelize){
     sequelize.define("Review",{
@@ -26,6 +26,14 @@ export default function(sequelize: Sequelize){
             validate:{
                 min: 0
             }
+        },
+        movieId:{
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        profileId:{
+            type: DataTypes.STRING,
+            allowNull: false,
         }
 
     })

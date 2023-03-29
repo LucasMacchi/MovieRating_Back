@@ -20,3 +20,8 @@ Profile Routes:
     -/patch-user ---> This route will change user username and sent an email informing about the change
 
     -/:id ---> This route will return an user, the id can be either the email or the id of the user
+
+Review Routes:
+    -/create ---> This route will create a new Review
+
+    -/:id ---> This route will return reviews, if you use type "m" use the id of a movie, "u" user id, "r" review id
