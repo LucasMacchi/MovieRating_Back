@@ -5,7 +5,7 @@ export const router = Router()
 import test_route from "./utils/test_route";
 import postReview from "./Controllers/postReview";
 import getReviews from "./Controllers/getReviews";
-
+import deleteReview from "./Controllers/deleteReview";
 
 //Routes
 router.get("/test", (_req, res) => {
@@ -35,6 +35,17 @@ router.get("/:id", async (req, res) => {
             const reviews = await getReviews(id, "")
             res.send(reviews)
         }
+    } catch (error) {
+        if(error instanceof Error) res.status(400).send("ERROR = "+error.message) 
+        else res.status(404).send("Error = " + error) 
+    }
+})
+
+router.delete("/:id", async (req, res) => {
+    try {
+        const id = req.params.id
+        await deleteReview(id)
+        res.send("Review deleted successfully")
     } catch (error) {
         if(error instanceof Error) res.status(400).send("ERROR = "+error.message) 
         else res.status(404).send("Error = " + error) 
