@@ -8,6 +8,8 @@ import passwordValidator from "./Controllers/passwordValidator";
 import patchActivateUser from "./Controllers/patchActivateUser";
 import patchUser from "./Controllers/patchUser";
 import getUser from "./Controllers/getUser";
+import like from "./Controllers/like";
+import unlike from "./Controllers/unlike";
 
 //Routes
 router.get("/test", (_req, res) => {
@@ -67,5 +69,28 @@ router.get("/:id", async (req, res) => {
     } catch (error) {
         if(error instanceof Error) res.status(400).send("ERROR = "+error.message) 
         else res.status(404).send("Error = " + error) 
+    }
+})
+
+//This route will "like" a review, it needs the userID and the reviewID from the body
+router.post("/like", async (req, res) => {
+    try {
+        const {user_id, review_id} = req.body
+        const response = await like(user_id, review_id)
+        res.send(response)
+    } catch (error) {
+        if(error instanceof Error) res.status(400).send("ERROR = "+error.message) 
+        else res.status(404).send("Error = " + error) 
+    }
+})
+//This route will "unlike" a review, it needs the userID and the reviewID from the body
+router.delete("/unlike", async (req, res) => {
+    try {
+        const {user_id, review_id} = req.body
+        const response = await unlike(user_id, review_id)
+        res.send(response)
+    } catch (error) {
+        if(error instanceof Error) res.status(400).send("ERROR = "+error.message) 
+        else res.status(404).send("Error = " + error)  
     }
 })

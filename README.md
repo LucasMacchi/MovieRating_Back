@@ -21,6 +21,10 @@ Profile Routes:
 
     -/:id ---> This route will return an user, the id can be either the email or the id of the user
 
+    -/like ---> This route will "like" a review, it needs the userID and the reviewID from the body
+
+    -/unlike ---> This route will "unlike" a review, it needs the userID and the reviewID from the body
+
 Review Routes:
     -/create ---> This route will create a new Review
 

@@ -4,7 +4,7 @@ import { Sequelize } from "sequelize"
 //Models
 import Profile from "./Models/Profile"
 import Review from "./Models/Review"
-import Movie from "./Models/Movie"
+import Likes from "./Models/Likes"
 //
 
 const dbUser: string = process.env.DB_USER ? process.env.DB_USER : "no user"
@@ -19,8 +19,8 @@ const createTables = (sequalize: Sequelize) => {
         Profile(sequalize)
         console.log("------------------REVIEW CREATED------------------")
         Review(sequalize)
-        console.log("------------------MOVIE CREATED------------------")
-        Movie(sequalize) 
+        console.log("------------------LIKES CREATED------------------")
+        Likes(sequalize) 
     } catch (error) {
         if(error instanceof Error) console.log("Error creating tables: "+error.message)
         else console.log("Error creating tables: ",error)
