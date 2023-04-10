@@ -5,6 +5,7 @@ import { Sequelize } from "sequelize"
 import Profile from "./Models/Profile"
 import Review from "./Models/Review"
 import Likes from "./Models/Likes"
+import Sessions from "./Models/Sessions"
 //
 
 const dbUser: string = process.env.DB_USER ? process.env.DB_USER : "no user"
@@ -21,6 +22,8 @@ const createTables = (sequalize: Sequelize) => {
         Review(sequalize)
         console.log("------------------LIKES CREATED------------------")
         Likes(sequalize) 
+        console.log("------------------SESSIONS CREATED------------------")
+        Sessions(sequalize)
     } catch (error) {
         if(error instanceof Error) console.log("Error creating tables: "+error.message)
         else console.log("Error creating tables: ",error)

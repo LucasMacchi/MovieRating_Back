@@ -1,7 +1,7 @@
 import { DataTypes, Sequelize } from "sequelize";
 
 export default function(sequelize: Sequelize){
-    sequelize.define("Likes",{
+    sequelize.define("Sessions",{
         id:{
             type: DataTypes.UUID,
             allowNull: false,
@@ -12,11 +12,16 @@ export default function(sequelize: Sequelize){
             type: DataTypes.UUID,
             allowNull: false,
         },
-        review_id:{
+        session_id:{
             type: DataTypes.UUID,
+            allowNull: false,
+            defaultValue: DataTypes.UUIDV4
+        },
+        expiredAt:{
+            type: DataTypes.DATE,
             allowNull: false,
         }
     },{
-        updatedAt: false
+        updatedAt:false
     })
 }
