@@ -33,3 +33,7 @@ Review Routes:
     -DEL /:id ---> This route will delete a review
 
     -PATCH /:id ----> This route will modify the review
+
+Authentication Routes: 
+    - POST /login ---> Verifies user data and create a session id and cookies
+    - DELETE /logout ---> With the user id, it deletes the session registry

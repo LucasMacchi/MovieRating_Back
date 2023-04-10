@@ -5,12 +5,14 @@ import bodyParser from "body-parser"
 import * as dotenv from "dotenv"
 dotenv.config()
 import { router } from "./Routes"
+import cookieParser from "cookie-parser"
 // Create server
 
 export const server = express()
 export const PORT = process.env.PORT
 
 //Middlewares
+server.use(cookieParser())
 server.use(morgan("short"))
 server.use(bodyParser.urlencoded({extended:true, limit: "10mb"}))
 server.use(bodyParser.json({limit: "10mb"}))

@@ -11,11 +11,11 @@ export default function(sequelize: Sequelize){
         user_id:{
             type: DataTypes.UUID,
             allowNull: false,
+            unique: true
         },
         session_id:{
-            type: DataTypes.UUID,
+            type: DataTypes.STRING,
             allowNull: false,
-            defaultValue: DataTypes.UUIDV4
         },
         expiredAt:{
             type: DataTypes.DATE,

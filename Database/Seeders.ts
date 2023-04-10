@@ -8,7 +8,7 @@ export async function profileSeeder(connexion: Sequelize){
         {
             email: "lucas@agmail.com",
             username: "lucas",
-            password: Math.floor(Math.random()*600).toString(),
+            password: "jejexd",
             dateBirth: new Date(2000, 1, 1),
         },
         {
