@@ -23,7 +23,10 @@ router.post("/login", async (req, res) => {
 router.delete("/logout", async (req, res) => {
     try {
         const {user_id} = req.body
-        res.send(await logout(user_id))
+        const response = await logout(user_id)
+        res.clearCookie("session_id")
+        res.send(response)
+        res.end()
     } catch (error) {
         if(error instanceof Error) res.status(400).send("ERROR = "+error.message) 
         else res.status(404).send("Error = " + error) 

@@ -9,7 +9,6 @@ export default async function (email: string){
     const id = randomBytes(16).toString("hex")
     let expiration = new Date()
     expiration.setSeconds(expiration.getSeconds()+seconds)
-    console.log(expiration)
     const session = await connexion.models.Sessions.create({
         user_id: user_id,
         session_id: id,
