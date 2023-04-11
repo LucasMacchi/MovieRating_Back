@@ -20,6 +20,12 @@ export default function(sequelize: Sequelize){
         expiredAt:{
             type: DataTypes.DATE,
             allowNull: false,
+        },
+        session_reference_id:{
+            type: DataTypes.UUID,
+            allowNull: false, 
+            unique: true,
+            defaultValue: DataTypes.UUIDV4
         }
     },{
         updatedAt:false

@@ -4,16 +4,26 @@ export const router = Router()
 //Controllers
 import login from "./Controllers/login";
 import logout from "./Controllers/logout";
-
+import {sessionCheck} from "./Controllers/sessionCheck";
 
 
 //Routes
+
+//test authentication
+router.get("/test", sessionCheck ,async (_req, res) => {
+    res.send("PROTECTED")
+})
+
+//Cookies
+router.get("/cookies",async (req, res) => {
+
+    res.send(req.cookies)
+})
+
 router.post("/login", async (req, res) => {
     try {
-        const {email, password} = req.body
-        const response = await login(email,password)
-        res.cookie("session_id",response.dataValues.session_id,{expires: response.dataValues.expiredAt})
-        res.send("Session authenticated")
+        const {email, password} = req.body        
+        res.send(await login(email,password, res))
     } catch (error) {
         if(error instanceof Error) res.status(400).send("ERROR = "+error.message) 
         else res.status(404).send("Error = " + error) 
@@ -22,10 +32,8 @@ router.post("/login", async (req, res) => {
 
 router.delete("/logout", async (req, res) => {
     try {
-        const {user_id} = req.body
-        const response = await logout(user_id)
-        res.clearCookie("session_id")
-        res.send(response)
+        const {session_id} = req.body
+        res.send(await logout(session_id, res))
         res.end()
     } catch (error) {
         if(error instanceof Error) res.status(400).send("ERROR = "+error.message) 

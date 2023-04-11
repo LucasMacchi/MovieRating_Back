@@ -35,5 +35,10 @@ Review Routes:
     -PATCH /:id ----> This route will modify the review
 
 Authentication Routes: 
+    - GET /test ---> test of authenticatior
+
+    - GET /cookies ---> check current cookies
+
     - POST /login ---> Verifies user data and create a session id and cookies
+
     - DELETE /logout ---> With the user id, it deletes the session registry
