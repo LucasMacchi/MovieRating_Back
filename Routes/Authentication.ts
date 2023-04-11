@@ -4,13 +4,13 @@ export const router = Router()
 //Controllers
 import login from "./Controllers/login";
 import logout from "./Controllers/logout";
-import {sessionCheck} from "./Controllers/sessionCheck";
+import * as authentication from "./Controllers/sessionCheck";
 
 
 //Routes
 
 //test authentication
-router.get("/test", sessionCheck ,async (_req, res) => {
+router.get("/test", authentication.sessionSuperAdminCheck ,async (_req, res) => {
     res.send("PROTECTED")
 })
 

@@ -14,19 +14,19 @@ export async function profileSeeder(connexion: Sequelize){
         {
             email: "Martin@agmail.com",
             username: "Martin",
-            password: Math.floor(Math.random()*600).toString(),
+            password: "holaaa",
             dateBirth: new Date(2000, 1, 1),
         },
         {
             email: "Tomas@agmail.com",
             username: "Tomas",
-            password: Math.floor(Math.random()*600).toString(),
+            password: "buenaaas",
             dateBirth: new Date(2000, 1, 1),
         },
         {
             email: "Tobi@agmail.com",
             username: "Tobi",
-            password: Math.floor(Math.random()*600).toString(),
+            password: "chauuu",
             dateBirth: new Date(2000, 1, 1),
         },
         {

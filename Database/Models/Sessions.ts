@@ -26,6 +26,16 @@ export default function(sequelize: Sequelize){
             allowNull: false, 
             unique: true,
             defaultValue: DataTypes.UUIDV4
+        },
+        isAdmin:{
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false
+        },
+        isSuperAdmin:{
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false
         }
     },{
         updatedAt:false

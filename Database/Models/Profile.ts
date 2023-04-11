@@ -33,6 +33,16 @@ export default function(sequelize: Sequelize){
         },
         activationCode:{
             type: DataTypes.INTEGER
+        },
+        isAdmin:{
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false
+        },
+        isSuperAdmin:{
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false
         }
     })
 }
