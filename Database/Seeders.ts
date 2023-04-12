@@ -69,13 +69,28 @@ export async function profileSeeder(connexion: Sequelize){
     
     for(let u of users){
         const pass = await encryptPassword(u.password)
-        await models.Profile.create({
-            email: u.email,
-            username: u.username,
-            password: pass,
-            dateBirth: u.dateBirth,
-            isActivated: true
-        })
+        if(u.email === "lucas@agmail.com"){
+            console.log("Admin created in seeders")
+            await models.Profile.create({
+                email: u.email,
+                username: u.username,
+                password: pass,
+                dateBirth: u.dateBirth,
+                isActivated: true,
+                isSuperAdmin: true,
+                isAdmin: true
+            })
+        }
+        else{
+            await models.Profile.create({
+                email: u.email,
+                username: u.username,
+                password: pass,
+                dateBirth: u.dateBirth,
+                isActivated: true
+            })
+        }
+
     }
 
     console.log("Seeders finished")

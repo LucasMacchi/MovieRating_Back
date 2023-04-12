@@ -43,10 +43,10 @@ router.get("/:id", async (req, res) => {
     }
 })
 // This route will delete a review
-router.delete("/:id", async (req, res) => {
+router.delete("/delete-review", async (req, res) => {
     try {
-        const id = req.params.id
-        await deleteReview(id)
+        const {review_id, user_id} = req.body
+        await deleteReview(review_id, user_id)
         res.send("Review deleted successfully")
     } catch (error) {
         if(error instanceof Error) res.status(400).send("ERROR = "+error.message) 

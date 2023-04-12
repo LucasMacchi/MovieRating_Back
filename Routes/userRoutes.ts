@@ -10,7 +10,7 @@ import patchUser from "./Controllers/patchUser";
 import getUser from "./Controllers/getUser";
 import like from "./Controllers/like";
 import unlike from "./Controllers/unlike";
-import makeAdmin from "./Controllers/makeAdmin";
+import createReport from "./Controllers/createReport";
 //Routes
 router.get("/test", (_req, res) => {
     res.send(test_route())
@@ -94,14 +94,15 @@ router.delete("/unlike", async (req, res) => {
         else res.status(404).send("Error = " + error)  
     }
 })
-//This route will make a user admin by its id
-router.patch("/admin-user", async (req, res) => {
+//This route will create a new report
+router.post("/report", async (req, res) => {
     try {
-        const {user_id} = req.body
-        await makeAdmin(user_id)
-        res.send("User has been made admin")
+        const {review_id, user_id, description, type } = req.body
+        const response = await createReport(review_id, user_id, description, type)
+        res.send(response)
     } catch (error) {
         if(error instanceof Error) res.status(400).send("ERROR = "+error.message) 
-        else res.status(404).send("Error = " + error) 
+        else res.status(404).send("Error = " + error)  
     }
 })
+

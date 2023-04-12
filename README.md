@@ -30,7 +30,7 @@ Review Routes:
 
     -/:id ---> This route will return reviews, if you use type "m" use the id of a movie, "u" user id, "r" review id
     
-    -DEL /:id ---> This route will delete a review
+    -DEL /delete-review ---> This route will delete a review
 
     -PATCH /:id ----> This route will modify the review
 
@@ -42,3 +42,11 @@ Authentication Routes:
     - POST /login ---> Verifies user data and create a session id and cookies
 
     - DELETE /logout ---> With the user id, it deletes the session registry
+
+Admin Routes:
+
+    - PATCH /admin-user ---> This route will make a user admin by its id
+
+    - DEL /delete-review/:id ---> This route will delete a review only using its id
+
+    

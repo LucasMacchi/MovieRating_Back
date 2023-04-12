@@ -5,6 +5,7 @@ export default async function(id: string){
     if(user){
         const userValues = user.dataValues
         const filteredUser = {
+            id: userValues.id,
             username: userValues.username,
             email: userValues.email,
             dateBirth: userValues.dateBirth,
@@ -18,6 +19,7 @@ export default async function(id: string){
         if(user){
             const userValues = user.dataValues
             const filteredUser = {
+                id: userValues.id,
                 username: userValues.username,
                 email: userValues.email,
                 dateBirth: userValues.dateBirth,
@@ -30,5 +32,4 @@ export default async function(id: string){
             throw Error("User doesn't exist")
         }
     }
-
 }
