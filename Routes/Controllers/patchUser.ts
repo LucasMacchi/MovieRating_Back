@@ -1,5 +1,5 @@
 import connexion from "../..";
-import mailMessage from "../utils/mailMessage";
+import userNameChange from "../utils/MailMessages/userNameChange";
 
 export default async function(username: string, email: string) {
     const userCheck = await connexion.models.Profile.findOne({where:{username: username}})
@@ -10,7 +10,7 @@ export default async function(username: string, email: string) {
                 if(user.dataValues.isActivated){
                     user.set({username: username})
                     await user.save()
-                    await mailMessage(1, user.dataValues.email)
+                    await userNameChange(user.dataValues.email)
                 }
                 else throw Error("User hasn't been activated")
             }

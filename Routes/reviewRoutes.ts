@@ -16,8 +16,8 @@ router.get("/test", (_req, res) => {
 //This route will create a new Review
 router.post("/create", async (req, res) => {
     try {
-        const {userId, movieId, comment, rating} = req.body
-        await postReview(userId, movieId, comment, rating)
+        const {user_id, movie_id, comment, rating} = req.body
+        await postReview(user_id, movie_id, comment, rating)
         res.send("Review created!")
     } catch (error) {
         if(error instanceof Error) res.status(400).send("ERROR = "+error.message) 

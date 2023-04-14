@@ -1,5 +1,6 @@
 import connexion from "../..";
 import { Ireview } from "../Interfaces/reviewInterface";
+import reviewPosted from "../utils/MailMessages/reviewPosted";
 
 export default async function(userId: string, movieId: string, comment: string, rating: number){
     const user = await connexion.models.Profile.findByPk(userId)
@@ -19,5 +20,5 @@ export default async function(userId: string, movieId: string, comment: string, 
         movieId: newReview.movieId,
         profileId: newReview.profileId
     })
-    
+    await reviewPosted(user.dataValues.email, movieId, newReview)
 }

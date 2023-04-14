@@ -6,7 +6,7 @@ export async function profileSeeder(connexion: Sequelize){
     const models = connexion.models
     const users: User[] = [
         {
-            email: "lucas@agmail.com",
+            email: "lucasmacchi25@gmail.com",
             username: "lucas",
             password: "jejexd",
             dateBirth: new Date(2000, 1, 1),
@@ -69,7 +69,7 @@ export async function profileSeeder(connexion: Sequelize){
     
     for(let u of users){
         const pass = await encryptPassword(u.password)
-        if(u.email === "lucas@agmail.com"){
+        if(u.email === "lucasmacchi25@gmail.com"){
             console.log("Admin created in seeders")
             await models.Profile.create({
                 email: u.email,
