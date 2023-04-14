@@ -5,7 +5,7 @@ export const router = Router()
 import test_route from "./utils/test_route";
 import makeAdmin from "./Controllers/makeAdmin";
 import deleteReviewAdmin from "./Controllers/deleteReviewAdmin";
-
+import solveReport from "./Controllers/solveReport";
 
 //Routes
 router.get("/test", (_req, res) => {
@@ -30,6 +30,17 @@ router.delete("/delete-review/:id", async (req, res) => {
         const id = req.params.id
         await deleteReviewAdmin(id)
         res.send("Review has benn deleted")
+    } catch (error) {
+        if(error instanceof Error) res.status(400).send("ERROR = "+error.message) 
+        else res.status(404).send("Error = " + error) 
+    }
+})
+//This route will solved a report
+router.patch("/solve-report/:id", async (req, res) => {
+    try {
+        const id = req.params.id
+        await solveReport(id)
+        res.send("The report has been solved!")
     } catch (error) {
         if(error instanceof Error) res.status(400).send("ERROR = "+error.message) 
         else res.status(404).send("Error = " + error) 

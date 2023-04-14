@@ -49,4 +49,6 @@ Admin Routes:
 
     - DEL /delete-review/:id ---> This route will delete a review only using its id
 
+    - PATCH /solved-report/:id ---> This route will solved a report
+
     
