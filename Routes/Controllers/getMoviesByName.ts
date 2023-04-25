@@ -17,6 +17,7 @@ export default async function(nameMovie: string): Promise<Interface.MovieDataArr
         }
         data.push(obj)
     })
+    console.log(data)
     return data
 
 }
