@@ -11,10 +11,11 @@ router.get("/test", (_req, res) => {
     res.send(test_route())
 })
 
-router.get("/:name", async (req, res) => {
+router.get("/:name/:size", async (req, res) => {
     try {
         const nameOfMovie = req.params.name
-        const response = await getMoviesByName(nameOfMovie)
+        const pagSize = req.params.size
+        const response = await getMoviesByName(nameOfMovie, parseInt(pagSize))
         res.send(response)
     } catch (error) {
         if(error instanceof Error) res.status(400).send("ERROR = "+error.message) 
