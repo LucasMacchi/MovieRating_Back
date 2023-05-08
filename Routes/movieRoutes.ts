@@ -24,9 +24,10 @@ router.get("/:name/:size", async (req, res) => {
 
 })
 
-router.get("/detail/:id", async (req, res) => {
+router.post("/detail", async (req, res) => {
     try {
-        const movieID = req.params.id
+        const movieID = req.body.id
+        console.log(req.body)
         const response = await getMovieDetails(movieID)
         res.send(response)
     } catch (error) {

@@ -7,7 +7,7 @@ Routes:
 
 Movie Routes:
     - /:name --> this will bring movies matching the name searched
-    - /detail/:id --> this will bring the details of the movie
+    - /detail --> this will bring the details of the movie using an id passed in the body
 
 
 Profile Routes:

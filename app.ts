@@ -16,9 +16,9 @@ export const PORT = process.env.PORT
 //Middlewares
 server.use(cors())
 server.use(cookieParser())
-server.use(morgan("short"))
-server.use(bodyParser.urlencoded({extended:true, limit: "10mb"}))
-server.use(bodyParser.json({limit: "10mb"}))
+server.use(morgan("dev"))
+server.use(bodyParser.urlencoded({extended:true}))
+server.use(bodyParser.json())
 server.use("/", router)
 //test
 server.get("/ping", (_req, res) => {
