@@ -7,7 +7,7 @@ export default async function(id: string, type: string){
         return reviews
     }
     else if(type === "u"){
-        const reviews = await connexion.models.Review.findAll({where:{profileId: id}})
+        const reviews = await connexion.models.Review.findAll({where:{profileId: id}, raw: true})
         if(reviews.length === 0) throw Error("User doesn't have reviews")
         return reviews
     }

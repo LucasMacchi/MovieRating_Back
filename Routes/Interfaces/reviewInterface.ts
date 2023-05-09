@@ -3,5 +3,6 @@ export interface Ireview {
     rating: number,
     movieId: string,
     profileId: string,
-    likes?: number
+    likes?: number,
+    username: string
 }

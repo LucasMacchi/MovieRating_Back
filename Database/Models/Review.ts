@@ -34,6 +34,10 @@ export default function(sequelize: Sequelize){
         profileId:{
             type: DataTypes.STRING,
             allowNull: false,
+        },
+        profileUser:{
+            type: DataTypes.STRING,
+            allowNull:false
         }
 
     })

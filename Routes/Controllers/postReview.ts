@@ -13,12 +13,14 @@ export default async function(userId: string, movieId: string, comment: string, 
         rating: rating,
         movieId: movieId,
         profileId: user.dataValues.id,
+        username: user.dataValues.username
     }
     await connexion.models.Review.create({
         comment: newReview.comment,
         rating: newReview.rating,
         movieId: newReview.movieId,
-        profileId: newReview.profileId
+        profileId: newReview.profileId,
+        profileUser: newReview.username
     })
     await reviewPosted(user.dataValues.email, movieId, newReview)
 }

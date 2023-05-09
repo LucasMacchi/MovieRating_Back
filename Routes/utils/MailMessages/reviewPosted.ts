@@ -7,7 +7,6 @@ export default async function(email: string, movie_id: string, review: Ireview){
     const moviedata = await getMovieDetails(movie_id)
     const config = mailerConfig()
     const tranporter = nodemailer.createTransport(config)
-    console.log(moviedata.posterImage)
     await tranporter.sendMail({
         from:config.auth.user,
         to: email,
