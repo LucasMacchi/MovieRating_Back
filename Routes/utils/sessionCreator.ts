@@ -14,7 +14,7 @@ export default async function (email: string){
         session_id: randomBytes(42).toString("hex"),
         expiredAt: expiration,
         isAdmin: user_id.dataValues.isAdmin,
-        isSuperAdmin: user_id.dataValues.isSuperAdmin
+        isSuperAdmin: user_id.dataValues.isSuperAdmin,
      })
     
     return session

@@ -11,10 +11,20 @@ import cors from "cors"
 
 export const server = express()
 export const PORT = process.env.PORT
-
-
+export const FRONTEND = process.env.FRONT_END_URL
+const whitelist = [FRONTEND,(FRONTEND+"/login")]
+console.log(whitelist)
 //Middlewares
-server.use(cors())
+server.use("*",cors({
+    origin: function (origin, callback) {
+        if (whitelist.indexOf(origin) !== -1) {
+          callback(null, true)
+        } else {
+          callback(new Error('Not allowed by CORS'))
+        }
+      },
+    credentials: true
+}))
 server.use(cookieParser())
 server.use(morgan("dev"))
 server.use(bodyParser.urlencoded({extended:true}))
