@@ -11,6 +11,7 @@ import getUser from "./Controllers/getUser";
 import like from "./Controllers/like";
 import unlike from "./Controllers/unlike";
 import createReport from "./Controllers/createReport";
+//import send_verificationEmail from "./utils/send_verificationEmail";
 //Routes
 router.get("/test", (_req, res) => {
     res.send(test_route())
@@ -78,6 +79,16 @@ router.post("/like", async (req, res) => {
         const {user_id, review_id} = req.body
         const response = await like(user_id, review_id)
         res.send(response)
+    } catch (error) {
+        if(error instanceof Error) res.status(400).send("ERROR = "+error.message) 
+        else res.status(404).send("Error = " + error) 
+    }
+})
+//Send verification email again ****WIP****
+router.get("/email", async (req, res) => {
+    try {
+        console.log(req)
+        res.send("Email sent")
     } catch (error) {
         if(error instanceof Error) res.status(400).send("ERROR = "+error.message) 
         else res.status(404).send("Error = " + error) 

@@ -1,6 +1,6 @@
 import * as interfaces from "../Interfaces/userInterface"
 import { encryptPassword } from "../utils/passwordCryter"
-import DateOfBirthParser from "../utils/DateOfBirthParser"
+//import DateOfBirthParser from "../utils/DateOfBirthParser"
 import connexion from "../.."
 import send_verificationEmail from "../utils/send_verificationEmail"
 import * as dotenv from "dotenv"
@@ -10,12 +10,16 @@ dotenv.config()
 const verification = process.env.EMAIL_VERIFICATION ? process.env.EMAIL_VERIFICATION : "N"
 
 export default async function (email: string, username: string, dateofbirth:string, password: string){
+    const date = new Date(dateofbirth)
+    console.log("DATE === "+dateofbirth+" | ",date)
     const newUser: interfaces.User = {
         email: email,
         username: username,
         password : await encryptPassword(password),
-        dateBirth: DateOfBirthParser(dateofbirth)
+        dateBirth: date
+        //dateBirth: DateOfBirthParser(dateofbirth)
     }
+    console.log(newUser)
     try {
         
         const models = connexion.models
