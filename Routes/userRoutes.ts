@@ -11,6 +11,8 @@ import getUser from "./Controllers/getUser";
 import like from "./Controllers/like";
 import unlike from "./Controllers/unlike";
 import createReport from "./Controllers/createReport";
+import emailFowarding from "./Controllers/emailFowarding";
+
 //import send_verificationEmail from "./utils/send_verificationEmail";
 //Routes
 router.get("/test", (_req, res) => {
@@ -39,7 +41,7 @@ router.post("/pass-validate", async (req, res) => {
     }
 })
 //This route will validate the user using a code sent to the email
-router.patch("/validate-user", async (req, res) => {
+router.post("/validate-user", async (req, res) => {
     try {
         const {email, code} = req.body
         await patchActivateUser(email, code)
@@ -85,9 +87,9 @@ router.post("/like", async (req, res) => {
     }
 })
 //Send verification email again ****WIP****
-router.get("/email", async (req, res) => {
+router.get("/email/:email", async (req, res) => {
     try {
-        console.log(req)
+        await emailFowarding(req.params.email)
         res.send("Email sent")
     } catch (error) {
         if(error instanceof Error) res.status(400).send("ERROR = "+error.message) 

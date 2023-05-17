@@ -25,6 +25,8 @@ Profile Routes:
 
     -/unlike ---> This route will "unlike" a review, it needs the userID and the reviewID from the body
 
+    -/email/:email ---> this route re send the verification code
+ 
 Review Routes:
     -/create ---> This route will create a new Review
 
