@@ -47,9 +47,9 @@ router.post("/login", async (req, res) => {
     }
 })
 
-router.delete("/logout", async (req, res) => {
+router.delete("/logout/:session_id", async (req, res) => {
     try {
-        const {session_id} = req.body
+        const session_id = req.params.session_id
         res.send(await logout(session_id, res))
         res.end()
     } catch (error) {

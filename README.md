@@ -45,7 +45,7 @@ Authentication Routes:
 
     - POST /login ---> Verifies user data and create a session id and cookies
 
-    - DELETE /logout ---> With the user id, it deletes the session registry
+    - DELETE /logout/session_id ---> With the session id, it deletes the session registry
 
 
 Admin Routes:
