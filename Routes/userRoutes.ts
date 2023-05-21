@@ -89,7 +89,18 @@ router.post("/like", async (req, res) => {
 //Send verification email again ****WIP****
 router.get("/email/:email", async (req, res) => {
     try {
-        await emailFowarding(req.params.email)
+        await emailFowarding(req.params.email, true)
+        res.send("Email sent")
+    } catch (error) {
+        if(error instanceof Error) res.status(400).send("ERROR = "+error.message) 
+        else res.status(404).send("Error = " + error) 
+    }
+})
+
+//Send code for password reset
+router.get("/passcode/:email", async (req, res) => {
+    try {
+        await emailFowarding(req.params.email, false)
         res.send("Email sent")
     } catch (error) {
         if(error instanceof Error) res.status(400).send("ERROR = "+error.message) 

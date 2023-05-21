@@ -26,6 +26,8 @@ Profile Routes:
     -/unlike ---> This route will "unlike" a review, it needs the userID and the reviewID from the body
 
     -/email/:email ---> this route re send the verification code
+
+    -/passcode/:id ---> Send code for password reset
  
 Review Routes:
     -/create ---> This route will create a new Review
@@ -45,7 +47,7 @@ Authentication Routes:
 
     - POST /login ---> Verifies user data and create a session id and cookies
 
-    - DELETE /logout/session_id ---> With the session id, it deletes the session registry
+    - DELETE /logout/:session_id ---> With the session id, it deletes the session registry
 
 
 Admin Routes:
