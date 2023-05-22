@@ -12,6 +12,8 @@ import like from "./Controllers/like";
 import unlike from "./Controllers/unlike";
 import createReport from "./Controllers/createReport";
 import emailFowarding from "./Controllers/emailFowarding";
+import postTokenPassword from "./Controllers/postTokenPassword";
+import patchPassword from "./Controllers/patchPassword";
 
 //import send_verificationEmail from "./utils/send_verificationEmail";
 //Routes
@@ -98,15 +100,28 @@ router.get("/email/:email", async (req, res) => {
 })
 
 //Send code for password reset
-router.get("/passcode/:email", async (req, res) => {
+router.post("/passcode/:email", async (req, res) => {
     try {
-        await emailFowarding(req.params.email, false)
+        await postTokenPassword(req.params.email)
         res.send("Email sent")
     } catch (error) {
         if(error instanceof Error) res.status(400).send("ERROR = "+error.message) 
         else res.status(404).send("Error = " + error) 
     }
 })
+
+//Send code for password reset
+router.patch("/password", async (req, res) => {
+    try {
+        const {token_id, newPassword} = req.body
+        await patchPassword(token_id, newPassword)
+        res.send("Password had been updated")
+    } catch (error) {
+        if(error instanceof Error) res.status(400).send("ERROR = "+error.message) 
+        else res.status(404).send("Error = " + error) 
+    }
+})
+
 //This route will "unlike" a review, it needs the userID and the reviewID from the body
 router.delete("/unlike", async (req, res) => {
     try {

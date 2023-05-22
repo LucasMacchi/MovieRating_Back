@@ -7,6 +7,7 @@ import Review from "./Models/Review"
 import Likes from "./Models/Likes"
 import Sessions from "./Models/Sessions"
 import Reports from "./Models/Reports"
+import Token from "./Models/Token"
 //
 
 const dbUser: string = process.env.DB_USER ? process.env.DB_USER : "no user"
@@ -27,6 +28,8 @@ const createTables = (sequalize: Sequelize) => {
         Sessions(sequalize)
         console.log("------------------REPORTS CREATED------------------")
         Reports(sequalize)
+        console.log("------------------TOKEN CREATED------------------")
+        Token(sequalize)
     } catch (error) {
         if(error instanceof Error) console.log("Error creating tables: "+error.message)
         else console.log("Error creating tables: ",error)

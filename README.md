@@ -27,7 +27,9 @@ Profile Routes:
 
     -/email/:email ---> this route re send the verification code
 
-    -/passcode/:id ---> Send code for password reset
+    -/passcode/:email ---> Send link for password reset
+
+    -/password ---> changes the password
  
 Review Routes:
     -/create ---> This route will create a new Review
