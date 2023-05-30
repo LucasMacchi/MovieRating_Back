@@ -14,6 +14,7 @@ import createReport from "./Controllers/createReport";
 import emailFowarding from "./Controllers/emailFowarding";
 import postTokenPassword from "./Controllers/postTokenPassword";
 import patchPassword from "./Controllers/patchPassword";
+import * as auth from "./Controllers/sessionCheck"
 
 //import send_verificationEmail from "./utils/send_verificationEmail";
 //Routes
@@ -78,7 +79,7 @@ router.get("/:id", async (req, res) => {
 })
 
 //This route will "like" a review, it needs the userID and the reviewID from the body
-router.post("/like", async (req, res) => {
+router.post("/like",auth.sessionCheck, async (req, res) => {
     try {
         const {user_id, review_id} = req.body
         const response = await like(user_id, review_id)
