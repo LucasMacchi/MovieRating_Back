@@ -8,6 +8,7 @@ export const sessionCheck = async (req: any, res: any, next: any) => {
     const isAuthActive: string = process.env.COOKIES_AUTHENTICATION ? process.env.COOKIES_AUTHENTICATION : "Y"
     if(isAuthActive === "Y"){
         try {
+            console.log(req.cookies.session_id)
             //if the cookies still exist (didnt expire)
             if(req.cookies.session_id){
                  //finding de session in the db

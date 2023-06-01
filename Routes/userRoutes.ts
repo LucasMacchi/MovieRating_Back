@@ -124,7 +124,7 @@ router.patch("/password", async (req, res) => {
 })
 
 //This route will "unlike" a review, it needs the userID and the reviewID from the body
-router.delete("/unlike", async (req, res) => {
+router.delete("/unlike",auth.sessionCheck, async (req, res) => {
     try {
         const {user_id, review_id} = req.body
         const response = await unlike(user_id, review_id)

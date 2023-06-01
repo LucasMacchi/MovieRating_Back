@@ -81,6 +81,22 @@ export async function profileSeeder(connexion: Sequelize){
                 isAdmin: true
             })
         }
+        else if(u.email === "Juani@agmail.com"){
+            const user = await models.Profile.create({
+                email: u.email,
+                username: u.username,
+                password: pass,
+                dateBirth: u.dateBirth,
+                isActivated: true
+            })
+            await models.Review.create({
+                rating: 5,
+                comment: "god",
+                movieId: "82b7cebe-fe7c-36ec-899e-28ea541f3a50",
+                profileId: user.dataValues.id,
+                profileUser: user.dataValues.username
+            })
+        }
         else{
             await models.Profile.create({
                 email: u.email,
