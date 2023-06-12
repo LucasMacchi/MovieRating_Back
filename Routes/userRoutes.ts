@@ -79,7 +79,7 @@ router.get("/:id", async (req, res) => {
 })
 
 //This route will "like" a review, it needs the userID and the reviewID from the body
-router.post("/like",auth.sessionCheck, async (req, res) => {
+router.post("/like",/*auth.sessionCheck,*/ async (req, res) => {
     try {
         const {user_id, review_id} = req.body
         const response = await like(user_id, review_id)

@@ -34,7 +34,7 @@ Profile Routes:
 Review Routes:
     -/create ---> This route will create a new Review
 
-    -/:id ---> This route will return reviews, if you use type "m" use the id of a movie, "u" user id, "r" review id
+    -/:id ---> This route will return reviews, if you use type "m" use the id of a movie, "u" user id, "r" review id, "l" for the reviews that the user liked
     
     -DEL /delete-review ---> This route will delete a review
 
