@@ -7,7 +7,7 @@ import postReview from "./Controllers/postReview";
 import getReviews from "./Controllers/getReviews";
 import deleteReview from "./Controllers/deleteReview";
 import patchReview from "./Controllers/patchReview";
-
+import * as auth from "./Controllers/sessionCheck"
 
 //Routes
 router.get("/test", (_req, res) => {
@@ -43,7 +43,7 @@ router.get("/:id", async (req, res) => {
     }
 })
 // This route will delete a review
-router.delete("/delete-review", async (req, res) => {
+router.delete("/delete-review", auth.sessionCheck, async (req, res) => {
     try {
         const {review_id, user_id} = req.body
         await deleteReview(review_id, user_id)
