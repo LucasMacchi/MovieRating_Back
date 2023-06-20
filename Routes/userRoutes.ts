@@ -56,7 +56,7 @@ router.post("/validate-user", async (req, res) => {
 
 })
 //This route will change user username and sent an email informing about the change
-router.patch("/patch-user", async (req, res) => {
+router.patch("/patch-user",auth.sessionCheck, async (req, res) => {
     try {
         const {email, username} = req.body
         await patchUser(username, email)
