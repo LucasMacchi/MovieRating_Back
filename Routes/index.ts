@@ -14,3 +14,8 @@ router.use("/review", reviewRoutes.router)
 router.use("/auth", authenticationRoutes.router)
 router.use("/admin", adminRoutes.router)
 
+//test
+router.get("/test", (_req, res) => {
+    res.send("PING")
+})
+
